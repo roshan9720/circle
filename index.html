@@ -1,69 +1,129 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Traffic Light Homework</title>
+  <title>3D Animated Traffic Light</title>
   <style>
-    /* Body styling to center the content */
     body {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;
       min-height: 100vh;
       margin: 0;
-      background-color: #f4f4f4;
+      background: linear-gradient(to bottom, #111, #222);
       font-family: Arial, sans-serif;
     }
 
-    /* Main Traffic Light Container Box */
-    .traffic-box {
-      width: 180px;
-      padding: 20px 10px;
-      border: 3px solid #000;
-      background-color: #ffffff;
+    /* Entire Setup Wrapper */
+    .traffic-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-bottom: 20px;
     }
 
-    /* Common Light/Circle styling */
+    /* Outer Container with Metallic Shading */
+    .traffic-box {
+      width: 150px;
+      padding: 25px 15px;
+      border: 4px solid #1a1a1a;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #333333, #1a1a1a);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), inset 0 2px 5px rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Base Circle Setup */
     .circle {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
+      color: rgba(255, 255, 255, 0.9);
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
+      letter-spacing: 1px;
       text-transform: uppercase;
+      opacity: 0.3; /* Default Dimmed State */
+      transition: all 0.4s ease-in-out;
     }
 
-    /* Individual Light Colors */
+    /* 3D Shading & Glow Effects */
     .red {
-      background-color: #e74c3c;
+      background: radial-gradient(circle at 30% 30%, #ff6b6b, #e74c3c, #800000);
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.6);
+      animation: glowRed 3s infinite;
     }
 
     .yellow {
-      background-color: #f39c12;
+      background: radial-gradient(circle at 30% 30%, #ffeaa7, #f1c40f, #96710c);
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.6);
+      animation: glowYellow 3s infinite 1s;
     }
 
     .green {
-      background-color: #1e8449;
+      background: radial-gradient(circle at 30% 30%, #55efc4, #2ecc71, #116b32);
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.6);
+      animation: glowGreen 3s infinite 2s;
+    }
+
+    /* Pole Styling with Metallic Metallic Finish */
+    .pole {
+      width: 24px;
+      height: 250px;
+      background: linear-gradient(90deg, #444, #888, #222);
+      border-radius: 0 0 5px 5px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+
+    /* Base Stand */
+    .pole-base {
+      width: 120px;
+      height: 15px;
+      background: linear-gradient(to right, #222, #555, #111);
+      border-radius: 5px 5px 0 0;
+      z-index: 1;
+    }
+
+    /* Glow Keyframes */
+    @keyframes glowRed {
+      0%, 33% { opacity: 1; box-shadow: 0 0 30px #e74c3c, inset 0 2px 4px rgba(255,255,255,0.6); }
+      34%, 100% { opacity: 0.3; box-shadow: inset 0 3px 6px rgba(0,0,0,0.6); }
+    }
+
+    @keyframes glowYellow {
+      0%, 33% { opacity: 0.3; box-shadow: inset 0 3px 6px rgba(0,0,0,0.6); }
+      34%, 66% { opacity: 1; box-shadow: 0 0 30px #f1c40f, inset 0 2px 4px rgba(255,255,255,0.6); }
+      67%, 100% { opacity: 0.3; box-shadow: inset 0 3px 6px rgba(0,0,0,0.6); }
+    }
+
+    @keyframes glowGreen {
+      0%, 66% { opacity: 0.3; box-shadow: inset 0 3px 6px rgba(0,0,0,0.6); }
+      67%, 100% { opacity: 1; box-shadow: 0 0 30px #2ecc71, inset 0 2px 4px rgba(255,255,255,0.6); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Traffic Light Structure -->
-  <div class="traffic-box">
-    <div class="circle red">STOP</div>
-    <div class="circle yellow">WAIT</div>
-    <div class="circle green">GO</div>
+  <div class="traffic-wrapper">
+    <!-- Traffic Light Box -->
+    <div class="traffic-box">
+      <div class="circle red">STOP</div>
+      <div class="circle yellow">WAIT</div>
+      <div class="circle green">GO</div>
+    </div>
+    <!-- Pole & Base -->
+    <div class="pole"></div>
+    <div class="pole-base"></div>
   </div>
 
 </body>
