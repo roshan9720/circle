@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Light Homework</title>
+  <style>
+    /* Body styling to center the content */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Main Traffic Light Container Box */
+    .traffic-box {
+      width: 180px;
+      padding: 20px 10px;
+      border: 3px solid #000;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Common Light/Circle styling */
+    .circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    /* Individual Light Colors */
+    .red {
+      background-color: #e74c3c;
+    }
+
+    .yellow {
+      background-color: #f39c12;
+    }
+
+    .green {
+      background-color: #1e8449;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Traffic Light Structure -->
+  <div class="traffic-box">
+    <div class="circle red">STOP</div>
+    <div class="circle yellow">WAIT</div>
+    <div class="circle green">GO</div>
+  </div>
+
+</body>
+</html>
